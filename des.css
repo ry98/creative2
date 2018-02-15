@@ -96,19 +96,20 @@ h2
   grid-template-columns: 1fr ;
 
 }
-@media screen and (min-width: 1000px) {
-  .wrapper {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-}
-@media screen and (min-width: 500px) {
+
+@media screen and (min-width: 600px) {
   .wrapper {
     grid-template-columns: 1fr 1fr;
   }
 }
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 900px) {
   .wrapper {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .wrapper {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 .recipe
