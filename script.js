@@ -2,6 +2,8 @@ $(document).ready(function() {
 	   $("#search").keypress(function(e) {
 	   	if(e.which==13)
 	   	{
+	   		document.getElementById("main").style.backgroundImage="none";
+	   		//window.location.href="recipes.html";
 	   		console.log("hi");
 	   		console.log($("#search").val());
 	   		var value=$("#search").val();
@@ -22,13 +24,14 @@ $(document).ready(function() {
 		console.log(json);
 		console.log("here");
 		var results = "";
-		results += "<h2> Results </h2><br><div class='mylist'>"+"<div class='wrapper'>";
+		results += "<h2> Results </h2>\n<br>\n<div class='mylist'>\n"+"<div class='wrapper'>\n";
 		for (var i=0; i<json.recipes.length; i++) {
-		    results += "<div class='image'>"+"<img src="+
-		    json.recipes[i].image_url +" alt='1' >"+
-    "<a href="+json.recipes[i].source_url+">"+json.recipes[i].title+"</a>"+"</div>";
+		    results += "<div class='image'>\n"+"<img src='"+
+		    json.recipes[i].image_url +"' alt='1' >\n"+
+    "<a  class=\"recipe\" href='"+json.recipes[i].source_url+"'>\n"+json.recipes[i].title+"</a>\n"+"</div>\n";
 }
-		results+='</div></div>';
+		results+='</div>\n</div>\n';
+		console.log(results);
 
 		$("#stackResults").html(results);
 	    }
@@ -38,30 +41,6 @@ $(document).ready(function() {
     }
 
     });
-	   $("#stackSubmit").click(function(e) {
-		e.preventDefault();
-		value = $("#stackInput").val();
-        console.log(value);
-		var myurl="https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle="+value+"&filter=default&site=stackoverflow";
-
-        $.ajax({
-	    url : myurl,
-	    dataType : "json",
-	    success : function(json) {
-		console.log(json);
-		var results = "";
-		results += '<h2> Stack Questions </h2><br><div class="mylist"><div class="in">';
-		for (var i=0; i<json.items.length; i++) {
-		    results += '<a href='+json.items[i].link+'>'+
-		    json.items[i].title+'</a>'+
-		    '<br><b>Posted by: </b>'+json.items[i].owner.display_name+'	 <b>View count: </b>'+json.items[i].view_count+'<br><hr>';
-		}
-		results+='</div></div>';
-		$("#stackResults").html(results);
-	    }
-	   });
-
-    });
-
+	   
 
 });
